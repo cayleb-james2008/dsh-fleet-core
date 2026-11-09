@@ -1,0 +1,41 @@
+{
+  "name": "dsh-fleet-core",
+  "version": "1.0.0",
+  "description": "The harness core of a six-seat agent fleet: admission control, a checker gate, and provider rotation — extracted from a working system.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node examples/verify-demo.mjs"
+  },
+  "files": [
+    "src",
+    "examples",
+    "docs",
+    "README.md",
+    "PROVENANCE.md",
+    "SCRUB.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "agents",
+    "agent-fleet",
+    "harness",
+    "orchestration",
+    "admission-control",
+    "model-routing",
+    "verification"
+  ],
+  "author": "Cayleb James",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cayleb-james2008/dsh-fleet-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cayleb-james2008/dsh-fleet-core/issues"
+  },
+  "homepage": "https://github.com/cayleb-james2008/dsh-fleet-core#readme"
+}
