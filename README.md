@@ -3,15 +3,12 @@
 [![test](https://github.com/cayleb-james2008/dsh-fleet-core/actions/workflows/test.yml/badge.svg)](https://github.com/cayleb-james2008/dsh-fleet-core/actions/workflows/test.yml)
 
 Three mechanisms from a six-seat agent fleet that has run more than a hundred
-ticket missions: **admission control**, a **checker gate**, and **provider
-rotation**. Each is a standalone ES module with no dependencies. The tests run
+ticket missions: admission control, a checker gate, and provider rotation. Each is a standalone ES module with no dependencies. The tests run
 on Node 20+ with nothing installed.
 
 This is a curated cut, not the fleet. The mission store, Slack intake, web face,
 memory, tools and the orchestration module that composes briefs and runs the swarm
-lifecycle are not here. What is here
-are the three decisions that are easiest to judge on their own — and the three
-that kept the system honest when it failed.
+lifecycle are not here. What is here are the three decisions that are easiest to judge on their own, and the three that kept the system honest when it failed.
 
 ```bash
 npm test          # 32 tests, no dependencies
@@ -103,9 +100,7 @@ What the gate guarantees:
   for file-system mtime resolution. A verdict older than the round is a FAIL
   that says so, not a PASS.
 - **The last line-anchored verdict wins.** The rule exists because a real fleet
-  once marked two failing artefacts done when the parser took the first
-  `VERDICT: PASS` it found — a line quoted from an earlier mission — while the
-  file's own final line said `FAIL`.
+  once marked two failing artefacts done when the parser took the first `VERDICT: PASS` it found, a line quoted from an earlier mission, while the file's own final line said `FAIL`.
 - **The command output is evidence, not a verdict.** A checker that writes
   `PASS` over a failing command is still a bad checker; the gate records the
   command result and preserves it in the round.
@@ -158,9 +153,7 @@ The mechanisms above are the surviving shapes of real failures. A short tour:
 
 - A checker file that quoted another mission's `PASS` was read as this
   mission's verdict. The fix is the last-line rule in `src/gate.js`.
-- A checker round that produced no verdict was read as a verdict on the
-  artefact. It is not. The gate reports `the checker wrote no verdict file`,
-  which is a statement about the round, not the work.
+- A checker round that produced no verdict was read as a verdict on the artefact. The gate reports `the checker wrote no verdict file` instead, which is a statement about the round, not the work.
 - A rotation entry marked `spent` was read as a provider quota fact. It is an
   operator toggle. The router treats it as routing state and never as a usage
   counter.
