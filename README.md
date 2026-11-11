@@ -1,4 +1,4 @@
-# dsh-fleet-core
+# DSH Fleet core
 
 [![test](https://github.com/cayleb-james2008/dsh-fleet-core/actions/workflows/test.yml/badge.svg)](https://github.com/cayleb-james2008/dsh-fleet-core/actions/workflows/test.yml)
 
